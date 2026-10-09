@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karachi Internships & Jobs Board - By Shahmeer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f6f7fb}
+.header{background:#0f172a;color:#fff;padding:22px 20px;text-align:center}
+.header h1{font-size:26px}.header p{color:#94a3b8;margin-top:6px;font-size:14px}
+.filters{background:#fff;padding:16px 20px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:10}
+.filters input, .filters select{padding:10px 14px;border:1px solid #d1d5db;border-radius:10px;min-width:180px;font-size:13px}
+.container{max-width:1100px;margin:22px auto;padding:0 16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(0,0,0,0.06);border:1px solid #eef2f7;transition:0.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.1)}
+.top{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.logo{width:44px;height:44px;background:#e0f2fe;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#0c4a6e;font-size:14px}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-right:6px}
+.b-front{background:#dcfce7;color:#166534}.b-sqa{background:#fef3c7;color:#92400e}.b-flutter{background:#dbeafe;color:#1e40af}.b-ai{background:#f3e8ff;color:#6b21a8}.b-mern{background:#ffedd5;color:#9a3412}
+.meta{font-size:12px;color:#64748b;margin:8px 0;display:flex;gap:12px;flex-wrap:wrap}
+.btns{display:flex;gap:10px;margin-top:12px}
+.btn{flex:1;padding:10px;border-radius:10px;border:none;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;font-size:13px}
+.btn-apply{background:#16a34a;color:#fff}.btn-detail{background:#0f172a;color:#fff}
+.stats{display:flex;gap:18px;justify-content:center;margin:18px 0;color:#334155;font-size:13px}
+.count{font-weight:800;color:#0f172a}
+.footer{text-align:center;padding:20px;color:#64748b;font-size:12px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>🚀 Karachi Internships & Jobs Board</h1>
+<p>Live internships from Top Software Houses in Karachi — Updated for BSCS Students | Orangi to Shahrah-e-Faisal</p>
+</div>
+
+<div class="filters">
+<input id="search" placeholder="Search role - e.g. Frontend, SQA, Flutter" oninput="render()">
+<select id="typeF" onchange="render()"><option value="">All Types</option><option>Frontend</option><option>SQA</option><option>Flutter</option><option>AI / Python</option><option>MERN Stack</option></select>
+<select id="locF" onchange="render()"><option value="">All Locations</option><option>Shahrah-e-Faisal</option><option>PECHS</option><option>Gulshan</option><option>Clifton</option><option>Remote</option></select>
+<select id="expF" onchange="render()"><option value="">All Levels</option><option>Internship</option><option>Entry Level</option></select>
+</div>
+
+<div class="stats">
+<div>Total: <span class="count" id="total">0</span> jobs</div><div>For BSCS 7th Sem: <span class="count">Ready to Apply</span></div><div>Contact: <span class="count">0312-2252118</span></div>
+</div>
+
+<div class="container"><div class="grid" id="grid"></div></div>
+
+<div class="footer">Made by Shahmeer Ahmed — BSCS 7th Sem, Karachi | Data from LinkedIn, Rozee.pk & Company Career Pages | Free for Students | Sector 14/C Orangi Town</div>
+
+<script>
+const jobs=[
+{company:'10Pearls',logo:'10P',role:'Frontend Intern',type:'Frontend',loc:'Shahrah-e-Faisal',level:'Internship',stipend:'25k-40k',tags:['HTML','CSS','JS'],desc:'React.js internship for BSCS students. 3 months leading to job.',apply:'https://www.linkedin.com/jobs/search/?keywords=Frontend%20Intern%20Karachi&location=Karachi',detail:'https://10pearls.com/careers/'},
+{company:'Folio3',logo:'F3',role:'Flutter Intern',type:'Flutter',loc:'PECHS',level:'Internship',stipend:'30k-45k',tags:['Flutter','Dart','Firebase'],desc:'Build mobile apps. Must have 1 project on GitHub.',apply:'https://www.linkedin.com/jobs/search/?keywords=Flutter%20Intern%20Karachi',detail:'https://folio3.com/careers/'},
+{company:'Contour Software',logo:'CS',role:'SQA / QA Intern',type:'SQA',loc:'Gulshan',level:'Internship',stipend:'20k-35k',tags:['Manual Testing','JIRA'],desc:'Easiest to get for BSCS. No heavy coding, learn testing.',apply:'https://www.linkedin.com/jobs/search/?keywords=SQA%20Intern%20Karachi',detail:'https://contour-software.com/careers/'},
+{company:'Systems Limited',logo:'SL',role:'AI / Python Intern',type:'AI / Python',loc:'Clifton',level:'Internship',stipend:'35k-50k',tags:['Python','ML','Data'],desc:'For Python lovers. Work on real AI projects.',apply:'https://www.linkedin.com/jobs/search/?keywords=AI%20Intern%20Karachi',detail:'https://www.systemsltd.com/careers/'},
+{company:'InvoZone',logo:'IZ',role:'MERN Stack Intern',type:'MERN Stack',loc:'Shahrah-e-Faisal',level:'Internship',stipend:'25k-45k',tags:['MongoDB','React','Node'],desc:'Full stack development internship. High demand in Karachi.',apply:'https://www.linkedin.com/jobs/search/?keywords=MERN%20Intern%20Karachi',detail:'https://invozone.com/careers/'},
+{company:'Genetech Solutions',logo:'GS',role:'WordPress Intern',type:'Frontend',loc:'PECHS',level:'Internship',stipend:'15k-25k',tags:['WordPress','Elementor'],desc:'Best for HTML/CSS beginners. Quick hiring.',apply:'https://www.rozee.pk/search/software-intern-karachi',detail:'https://genetechsolutions.com/careers/'},
+{company:'TradeSoft',logo:'TS',role:'Backend Intern (Laravel)',type:'MERN Stack',loc:'Gulshan',level:'Internship',stipend:'20k-30k',tags:['PHP','Laravel','MySQL'],desc:'Laravel backend internship for BSCS FYP students.',apply:'https://www.linkedin.com/jobs/search/?keywords=Laravel%20Intern%20Karachi',detail:'https://www.linkedin.com/company/tradesoft/'},
+{company:'NdcTech',logo:'ND',role:'SQA Automation Intern',type:'SQA',loc:'Shahrah-e-Faisal',level:'Entry Level',stipend:'30k-50k',tags:['Selenium','Automation'],desc:'Banking software testing. Full time job chances high.',apply:'https://www.linkedin.com/jobs/search/?keywords=SQA%20Automation%20Karachi',detail:'https://ndctech.net/careers/'},
+{company:'Bazaar Technologies',logo:'BZ',role:'Frontend Developer Intern',type:'Frontend',loc:'Remote',level:'Internship',stipend:'35k-60k',tags:['React','Next.js'],desc:'Unicorn startup of Pakistan. Remote + high stipend.',apply:'https://www.linkedin.com/jobs/search/?keywords=Frontend%20Intern%20Remote%20Pakistan',detail:'https://www.bazaartech.com/careers'},
+];
+
+function render(){
+let s=document.getElementById('search').value.toLowerCase();
+let t=document.getElementById('typeF').value;
+let l=document.getElementById('locF').value;
+let e=document.getElementById('expF').value;
+let filtered=jobs.filter(j=>{
+return (j.role.toLowerCase().includes(s) || j.company.toLowerCase().includes(s) || j.tags.join(' ').toLowerCase().includes(s)) &&
+(!t || j.type===t) && (!l || j.loc===l) && (!e || j.level===e);
+});
+document.getElementById('total').innerText=filtered.length;
+document.getElementById('grid').innerHTML=filtered.map(j=>`
+<div class="card">
+<div class="top"><div class="logo">${j.logo}</div><div><b>${j.company}</b><br><span style="font-size:13px;color:#334155">${j.role}</span></div></div>
+<div><span class="badge b-${j.type.toLowerCase().includes('front')?'front':j.type.toLowerCase().includes('sqa')?'sqa':j.type.toLowerCase().includes('flut')?'flutter':j.type.toLowerCase().includes('ai')?'ai':'mern'}">${j.type}</span><span class="badge" style="background:#f1f5f9;color:#334155">${j.level}</span></div>
+<p style="font-size:12px;color:#475569;margin:10px 0">${j.desc}</p>
+<div class="meta"><span>📍 ${j.loc}</span><span>💰 ${j.stipend}</span><span>🎓 BSCS</span></div>
+<div style="margin:6px 0">${j.tags.map(tag=>`<span class="badge" style="background:#f8fafc;color:#475569;border:1px solid #e2e8f0">${tag}</span>`).join('')}</div>
+<div class="btns"><a class="btn btn-apply" href="${j.apply}" target="_blank">Apply Now</a><a class="btn btn-detail" href="${j.detail}" target="_blank">Company</a></div>
+</div>`).join('');
+}
+render();
+</script>
+</body>
+</html>
